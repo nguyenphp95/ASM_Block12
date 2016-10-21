@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ASM_Block1</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="listDanhSach">
+        <item>Giáo Trình Sưu Tầm</item>
+        <item>Kỹ Năng</item>
+        <item>Thủ Thuật</item>
+        <item>Truyện</item>
+    </string-array>
+    <string-array name="tenSach">
+        <item>4000 Từ Vựng Thông Dụng</item>
+        <item>BackTrack 5 Wireless Penetration Testing</item>
+        <item>Beginning_Java_Programming</item>
+        <item>Professional AngularJS</item>
+        <item>100 Điều Đúc Rút Từ Thực Tiễn</item>
+        <item>Con Nghĩ Đi Mẹ Không Biết</item>
+        <item>Điệp Viên Hoàn Hảo X6</item>
+    </string-array>
+
+</resources>
