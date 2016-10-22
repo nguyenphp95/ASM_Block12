@@ -1,11 +1,15 @@
 package asm_block1.com;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.Inflater;
+
 
 import Adapter.com.LibraryAdapter;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +26,9 @@ public class DanhSachDaThem extends Activity {
 	ArrayList<LibraryDB> danhmucsach = null;
 	LibraryAdapter libraryadapter;
 	ConnectDB db;
+	LibraryDB item;
+	List<LibraryDB> ar;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -53,10 +60,16 @@ public class DanhSachDaThem extends Activity {
 		libraryadapter = new LibraryAdapter(getApplicationContext(), R.layout.activity_item, danhmucsach);
 		listViewLibrary.setAdapter(libraryadapter);
 		
-		listViewLibrary.setOnItemLongClickListener(new OnItemLongClickListener() {
+		
+		item = new LibraryDB();
+	
+
+		
+		listViewLibrary.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+	
 			
 			@Override
-			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+			public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 				// TODO Auto-generated method stub
 				PopupMenu popup = new PopupMenu(DanhSachDaThem.this, view);
 				popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
@@ -65,16 +78,24 @@ public class DanhSachDaThem extends Activity {
 					@Override
 					public boolean onMenuItemClick(MenuItem item) {
 						// TODO Auto-generated method stub
-						Toast.makeText(getApplicationContext(), "Thông Báo" + item.getTitle(), Toast.LENGTH_SHORT).show();
+			
+						switch (item.getItemId()) {
+						case R.id.xoa:
+							deleteDialog(danhmucsach.get(position).getID());
+							break;
+						case R.id.sua:
+							alertDialog(danhmucsach.get(position).getID());
+							break;
+
+						default:
+							break;
+						}
 						return false;
 					}	
 				});
+				popup.show();
 				return false;
-//				try {
-//					popup.show();
-//				} catch (Exception e) {
-//					Toast.makeText(DanhSachDaThem.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
-//				}
+				
 				
 			}
 		
@@ -82,49 +103,83 @@ public class DanhSachDaThem extends Activity {
 		}); // Close setOnItemLongClick
 		
 	}
-//	public void alertDialog(final int id){
-//		final LibraryDB lib = new LibraryDB();
-//		Dialog dialogSua;
-//		dialogSua = new Dialog(getApplicationContext());
-//		dialogSua.setContentView(R.layout.activity_sua);
-//		dialogSua.setTitle("Sửa Thông Tin");
-//		lib.setID(id);
-//		
-//		final EditText edtSuaTheLoai;
-//		final EditText edtSuaTenSach;
-//		final EditText edtSuaTenTacGia;
-//		final EditText edtSuaNXB;
-//		final EditText edtSuaLink;
-//		Button btnSuaDialog,btnThoatDialog;
-//		
-//		edtSuaTheLoai =(EditText) findViewById(R.id.edtSuaTheLoai);
-//		edtSuaTenSach = (EditText) findViewById(R.id.edtSuaTenSach);
-//		edtSuaTenTacGia = (EditText) findViewById(R.id.edtSuaTenTacGia);
-//		edtSuaNXB = (EditText) findViewById(R.id.edtSuaNXB);
-//		edtSuaLink = (EditText) findViewById(R.id.edtSuaLink);
-//		btnSuaDialog = (Button) findViewById(R.id.btnSuaDialog);
-//		btnThoatDialog = (Button) findViewById(R.id.btnThoatDialog);
-//		
-//		btnSuaDialog.setOnClickListener(new View.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				lib.setTheLoai(edtSuaTheLoai.getText().toString());
-//				lib.setTenSach(edtSuaTenSach.getText().toString());
-//				lib.setTenTacGia(edtSuaTenTacGia.getText().toString());
-//				lib.setNXB(edtSuaNXB.getText().toString());
-//				lib.setLink(edtSuaLink.getText().toString());
-//				db.updateLibrary(lib);
-//				danhmucsach=db.GetAllLibraryDB();
-//				libraryadapter.reloadlist(danhmucsach);
-//				Toast.makeText(getApplicationContext(), "Sửa Thành Công", Toast.LENGTH_SHORT).show();								
-//			}
-//		});
-//		
-//		dialogSua.show();
-//		
-//	}
 	
+	// Sửa Dialog
+	public void alertDialog(final int id){
+		final LibraryDB lib = new LibraryDB();
+		Dialog dialogSua;
+		dialogSua = new Dialog(getApplicationContext());
+		dialogSua.setContentView(R.layout.activity_sua);
+		dialogSua.setTitle("Sửa Thông Tin");
+		lib.setID(id);
+		
+		final EditText edtSuaTheLoai;
+		final EditText edtSuaTenSach;
+		final EditText edtSuaTenTacGia;
+		final EditText edtSuaNXB;
+		final EditText edtSuaLink;
+		Button btnSuaDialog,btnThoatDialog;
+		
+		edtSuaTheLoai =(EditText) findViewById(R.id.edtSuaTheLoai);
+		edtSuaTenSach = (EditText) findViewById(R.id.edtSuaTenSach);
+		edtSuaTenTacGia = (EditText) findViewById(R.id.edtSuaTenTacGia);
+		edtSuaNXB = (EditText) findViewById(R.id.edtSuaNXB);
+		edtSuaLink = (EditText) findViewById(R.id.edtSuaLink);
+		btnSuaDialog = (Button) findViewById(R.id.btnSuaDialog);
+		btnThoatDialog = (Button) findViewById(R.id.btnThoatDialog);
+		
+		btnSuaDialog.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				lib.setTheLoai(edtSuaTheLoai.getText().toString());
+				lib.setTenSach(edtSuaTenSach.getText().toString());
+				lib.setTenTacGia(edtSuaTenTacGia.getText().toString());
+				lib.setNXB(edtSuaNXB.getText().toString());
+				lib.setLink(edtSuaLink.getText().toString());
+				db.updateLibrary(lib);
+				danhmucsach=db.GetAllLibraryDB();
+				libraryadapter.reloadlist(danhmucsach);
+				Toast.makeText(getApplicationContext(), "Sửa Thành Công", Toast.LENGTH_SHORT).show();								
+			}
+		});
+		
+		dialogSua.show();
+		
+	}
 	
+	//Thông Báo Delete Dialog
+	public void deleteDialog(int id){
+		AlertDialog.Builder del = new AlertDialog.Builder(getApplicationContext());
+		del.setTitle("Thông báo");
+		del.setMessage("Bạn có muốn xóa thật không?");
+		item.setID(id);
+		del.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				deleteLibrary(arg1);
+				arg0.cancel();
+			}
+		});
+		del.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		del.show();
+	}
+	
+	// Hàm xóa trong danh mục sách
+	public void deleteLibrary(int id){
+		db.deleteLibrary(item);
+		danhmucsach = db.GetAllLibraryDB();
+		libraryadapter = new LibraryAdapter(getApplicationContext(), R.layout.activity_item,danhmucsach);
+		listViewLibrary.setAdapter(libraryadapter);
+		Toast.makeText(getApplicationContext(), "Xoa"+item.getID(), Toast.LENGTH_SHORT).show();
+	}
+
 }
