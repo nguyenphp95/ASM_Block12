@@ -106,71 +106,103 @@ public class DanhSachDaThem extends Activity {
 	
 	// Sửa Dialog
 	public void alertDialog(final int id){
-		final LibraryDB lib = new LibraryDB();
-		Dialog dialogSua;
-		dialogSua = new Dialog(getApplicationContext());
-		dialogSua.setContentView(R.layout.activity_sua);
-		dialogSua.setTitle("Sửa Thông Tin");
-		lib.setID(id);
-		
-		final EditText edtSuaTheLoai;
-		final EditText edtSuaTenSach;
-		final EditText edtSuaTenTacGia;
-		final EditText edtSuaNXB;
-		final EditText edtSuaLink;
-		Button btnSuaDialog,btnThoatDialog;
-		
-		edtSuaTheLoai =(EditText) findViewById(R.id.edtSuaTheLoai);
-		edtSuaTenSach = (EditText) findViewById(R.id.edtSuaTenSach);
-		edtSuaTenTacGia = (EditText) findViewById(R.id.edtSuaTenTacGia);
-		edtSuaNXB = (EditText) findViewById(R.id.edtSuaNXB);
-		edtSuaLink = (EditText) findViewById(R.id.edtSuaLink);
-		btnSuaDialog = (Button) findViewById(R.id.btnSuaDialog);
-		btnThoatDialog = (Button) findViewById(R.id.btnThoatDialog);
-		
-		btnSuaDialog.setOnClickListener(new View.OnClickListener() {
+		try {
+			final LibraryDB lib = new LibraryDB();
+			final Dialog dialogSua;
+			dialogSua = new Dialog(DanhSachDaThem.this);
+			dialogSua.setContentView(R.layout.activity_sua);
+			dialogSua.setTitle("Sửa Thông Tin");
+			lib.setID(id);
 			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				lib.setTheLoai(edtSuaTheLoai.getText().toString());
-				lib.setTenSach(edtSuaTenSach.getText().toString());
-				lib.setTenTacGia(edtSuaTenTacGia.getText().toString());
-				lib.setNXB(edtSuaNXB.getText().toString());
-				lib.setLink(edtSuaLink.getText().toString());
-				db.updateLibrary(lib);
-				danhmucsach=db.GetAllLibraryDB();
-				libraryadapter.reloadlist(danhmucsach);
-				Toast.makeText(getApplicationContext(), "Sửa Thành Công", Toast.LENGTH_SHORT).show();								
-			}
-		});
+			final EditText edtSuaTheLoai;
+			final EditText edtSuaTenSach;
+			final EditText edtSuaTenTacGia;
+			final EditText edtSuaNXB;
+			final EditText edtSuaLink;
+			final Button btnSuaDialog;
+			Button btnThoatDialog;
+			dialogSua.show();
+			
+			edtSuaTheLoai =(EditText) dialogSua.findViewById(R.id.edtSuaTheLoai);
+			edtSuaTenSach = (EditText) dialogSua.findViewById(R.id.edtSuaTenSach);
+			edtSuaTenTacGia = (EditText) dialogSua.findViewById(R.id.edtSuaTenTacGia);
+			edtSuaNXB = (EditText) dialogSua.findViewById(R.id.edtSuaNXB);
+			edtSuaLink = (EditText) dialogSua.findViewById(R.id.edtSuaLink);
+			btnSuaDialog = (Button) dialogSua.findViewById(R.id.btnSuaDialog);
+			btnThoatDialog = (Button) dialogSua.findViewById(R.id.btnThoatDialog);
+//			Dua du lieu len control
+			LibraryDB lb = db.GetLibraryDB(id);
+			edtSuaTheLoai.setText(lb.getTheLoai());
+			edtSuaTenSach.setText(lb.getTheLoai());
+			edtSuaTenTacGia.setText(lb.getTenTacGia());
+			edtSuaNXB.setText(lb.getNXB());
+			edtSuaLink.setText(lb.getLink());
+			
+			
+			btnSuaDialog.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					lib.setTheLoai(edtSuaTheLoai.getText().toString());
+					lib.setTenSach(edtSuaTenSach.getText().toString());
+					lib.setTenTacGia(edtSuaTenTacGia.getText().toString());
+					lib.setNXB(edtSuaNXB.getText().toString());
+					lib.setLink(edtSuaLink.getText().toString());
+					db.updateLibrary(lib);
+					danhmucsach=db.GetAllLibraryDB();
+					libraryadapter.reloadlist(danhmucsach);
+					Toast.makeText(getApplicationContext(), "Sửa Thành Công", Toast.LENGTH_SHORT).show();								
+				}
+			});
+			btnThoatDialog = (Button) dialogSua.findViewById(R.id.btnThoatDialog);
+			btnThoatDialog.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					dialogSua.dismiss();
+				}
+			});
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			Toast.makeText(getApplicationContext(), "Thông Báo Lỗi"+e.getMessage(), Toast.LENGTH_LONG).show();
+		}
 		
-		dialogSua.show();
 		
 	}
 	
 	//Thông Báo Delete Dialog
+	
 	public void deleteDialog(int id){
-		AlertDialog.Builder del = new AlertDialog.Builder(getApplicationContext());
-		del.setTitle("Thông báo");
-		del.setMessage("Bạn có muốn xóa thật không?");
-		item.setID(id);
-		del.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-			
-			@Override
-			public void onClick(DialogInterface arg0, int arg1) {
-				deleteLibrary(arg1);
-				arg0.cancel();
-			}
-		});
-		del.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-			
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.cancel();
-			}
-		});
-		del.show();
+		try {
+			AlertDialog.Builder del = new AlertDialog.Builder(DanhSachDaThem.this);
+			del.setTitle("Thông báo");
+			del.setMessage("Bạn có muốn xóa thật không?");
+			item.setID(id);
+			del.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface arg0, int arg1) {
+					deleteLibrary(arg1);
+					arg0.cancel();
+				}
+			});
+			del.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+				}
+			});
+			del.show();
+		} catch (Exception e) {
+			Toast.makeText(getApplicationContext(), "Thông báo xóa"+e.getMessage(), Toast.LENGTH_LONG).show();
+		}
+		
 	}
 	
 	// Hàm xóa trong danh mục sách

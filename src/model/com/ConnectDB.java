@@ -90,7 +90,26 @@ public class ConnectDB extends SQLiteOpenHelper {
 		return dsThuVien;
 		
 	}
-	
+	public LibraryDB GetLibraryDB(int id){
+		LibraryDB thuvien = new LibraryDB();
+		String cautruyvan = "SELECT * FROM "+Table_Library+" WHERE "+Library_ID+"="+id+"";
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(cautruyvan, null);
+		if(cursor.moveToFirst()){
+			do{
+				
+				thuvien.setID(cursor.getInt(0));
+				thuvien.setTheLoai(cursor.getString(1));
+				thuvien.setTenSach(cursor.getString(2));
+				thuvien.setTenTacGia(cursor.getString(3));
+				thuvien.setNXB(cursor.getString(4));
+				thuvien.setLink(cursor.getString(5));
+				
+			}while(cursor.moveToNext());
+		}	
+		return thuvien;
+		
+	}
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {	
 		db.execSQL("DROP IF EXISTS "+ Table_Library);

@@ -61,9 +61,9 @@ public final class R {
         public static final int TextView05=0x7f090008;
         public static final int action_settings=0x7f090025;
         public static final int btnHienThi=0x7f090012;
-        public static final int btnSuaDialog=0x7f09001c;
+        public static final int btnSuaDialog=0x7f09001b;
         public static final int btnThem=0x7f090022;
-        public static final int btnThoatDialog=0x7f09001b;
+        public static final int btnThoatDialog=0x7f09001c;
         public static final int edtLink=0x7f090021;
         public static final int edtSuaLink=0x7f09001a;
         public static final int edtSuaNXB=0x7f09000e;

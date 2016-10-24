@@ -104,15 +104,15 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnThoatDialog"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Thoát" />
-
-    <Button
         android:id="@+id/btnSuaDialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sửa" />
+
+    <Button
+        android:id="@+id/btnThoatDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thoát" />
 
 </LinearLayout>
