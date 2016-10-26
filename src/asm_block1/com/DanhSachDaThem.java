@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,19 +22,27 @@ import android.widget.PopupMenu.OnMenuItemClickListener;
 import model.com.ConnectDB;
 import model.com.LibraryDB;
 
-public class DanhSachDaThem extends Activity {
+public class DanhSachDaThem extends Activity implements OnClickListener {
 	ListView listViewLibrary;
 	ArrayList<LibraryDB> danhmucsach = null;
 	LibraryAdapter libraryadapter;
 	ConnectDB db;
 	LibraryDB item;
 	List<LibraryDB> ar;
+	ImageView imgBack,imgAdd;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_danhsachdathem);
+		imgBack = (ImageView) findViewById(R.id.imgBack);
+		imgAdd = (ImageView) findViewById(R.id.imgAdd);
+		
+		imgBack.setOnClickListener(this);
+		imgAdd.setOnClickListener(this);
+		
+		
 			db = new ConnectDB(this);
 			listViewLibrary = (ListView) findViewById(R.id.listViewLibrary);
 			final LibraryDB thuvien = new LibraryDB();
@@ -212,6 +221,20 @@ public class DanhSachDaThem extends Activity {
 		libraryadapter = new LibraryAdapter(getApplicationContext(), R.layout.activity_item,danhmucsach);
 		listViewLibrary.setAdapter(libraryadapter);
 		Toast.makeText(getApplicationContext(), "Xoa"+item.getID(), Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public void onClick(View v) {
+		if (v==imgBack) {		
+				Intent intent = new Intent(this,MainActivity.class);
+				startActivity(intent);
+		}
+		if (v==imgAdd) {
+				Intent intent = new Intent(this,ThemSach.class);
+				startActivity(intent);
+			
+		}
+		
 	}
 
 }
