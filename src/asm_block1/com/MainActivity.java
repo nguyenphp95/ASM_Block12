@@ -13,7 +13,7 @@ import android.widget.*;
 public class MainActivity extends Activity{
 	SimpleSideDrawer slide_me;
 	ImageView imgMenu,imgThem,imgThuVien,imgHienThi,imgAboutMe;
-	TextView txt1,txt4,txt3;
+	TextView txt1,txt4,txt3,txt2;
 
 
 	@Override
@@ -30,6 +30,7 @@ public class MainActivity extends Activity{
 		txt4 = (TextView) findViewById(R.id.txt4);
 		txt1 = (TextView) findViewById(R.id.txt1);
 		txt3 = (TextView) findViewById(R.id.txt3);
+		txt2 = (TextView) findViewById(R.id.txt2);
 		imgThem = (ImageView) findViewById(R.id.imgThem);
 		
 		
@@ -120,6 +121,16 @@ public class MainActivity extends Activity{
 			}
 		});
 		
+		txt2.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getApplicationContext(),ThemSach.class);
+				startActivity(intent);
+				
+			}
+		});
 
 	}
 //	@Override
