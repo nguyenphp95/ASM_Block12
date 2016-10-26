@@ -54,29 +54,31 @@ public final class R {
         public static final int manager=0x7f020019;
         public static final int menu=0x7f02001a;
         public static final int meopushen=0x7f02001b;
-        public static final int phonewhiteblack=0x7f02001c;
-        public static final int plusbanner=0x7f02001d;
-        public static final int readingbanner=0x7f02001e;
-        public static final int search=0x7f02001f;
-        public static final int warbook=0x7f020020;
+        public static final int notepad=0x7f02001c;
+        public static final int phonewhiteblack=0x7f02001d;
+        public static final int plusbanner=0x7f02001e;
+        public static final int readingbanner=0x7f02001f;
+        public static final int search=0x7f020020;
+        public static final int warbook=0x7f020021;
     }
     public static final class id {
         public static final int TextView05=0x7f090009;
-        public static final int action_settings=0x7f09002a;
-        public static final int btnHienThi=0x7f09001c;
-        public static final int btnSuaDialog=0x7f090021;
-        public static final int btnThem=0x7f090027;
-        public static final int btnThoatDialog=0x7f090022;
-        public static final int edtLink=0x7f090026;
-        public static final int edtSuaLink=0x7f090020;
+        public static final int action_settings=0x7f09002d;
+        public static final int btnHienThi=0x7f09001f;
+        public static final int btnSuaDialog=0x7f090024;
+        public static final int btnThem=0x7f09002a;
+        public static final int btnThoatDialog=0x7f090025;
+        public static final int edtLink=0x7f090029;
+        public static final int edtSuaLink=0x7f090023;
         public static final int edtSuaNXB=0x7f09001a;
-        public static final int edtSuaTenSach=0x7f09001e;
-        public static final int edtSuaTenTacGia=0x7f09001f;
-        public static final int edtSuaTheLoai=0x7f09001d;
-        public static final int edtTacGia=0x7f090025;
-        public static final int edtTenSach=0x7f090024;
-        public static final int imageView3=0x7f090028;
-        public static final int imageView4=0x7f090029;
+        public static final int edtSuaTenSach=0x7f090021;
+        public static final int edtSuaTenTacGia=0x7f090022;
+        public static final int edtSuaTheLoai=0x7f090020;
+        public static final int edtTacGia=0x7f090028;
+        public static final int edtTenSach=0x7f090027;
+        public static final int imageView1=0x7f09001d;
+        public static final int imageView3=0x7f09002b;
+        public static final int imageView4=0x7f09002c;
         public static final int imgAdd=0x7f09000b;
         public static final int imgBack=0x7f090008;
         public static final int imgMenu=0x7f090003;
@@ -88,8 +90,9 @@ public final class R {
         public static final int imgTrangChu=0x7f090010;
         public static final int imgbtnMenu=0x7f090000;
         public static final int listViewLibrary=0x7f09000a;
-        public static final int spinner1=0x7f090023;
-        public static final int sua=0x7f09002c;
+        public static final int spinner1=0x7f090026;
+        public static final int sua=0x7f09002f;
+        public static final int textView1=0x7f09001e;
         public static final int textView2=0x7f090001;
         public static final int textView3=0x7f090004;
         public static final int textView4=0x7f090005;
@@ -105,7 +108,8 @@ public final class R {
         public static final int txtSuaNXB=0x7f090002;
         public static final int txtTenSach=0x7f09000c;
         public static final int txtTenTacGia=0x7f09000d;
-        public static final int xoa=0x7f09002b;
+        public static final int txtThuVienHot=0x7f09001c;
+        public static final int xoa=0x7f09002e;
     }
     public static final class layout {
         public static final int activity_about=0x7f030000;
