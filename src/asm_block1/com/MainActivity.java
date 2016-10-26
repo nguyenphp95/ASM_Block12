@@ -22,7 +22,7 @@ public class MainActivity extends Activity{
 		setContentView(R.layout.activity_main);
 		
 		imgMenu = (ImageView) findViewById(R.id.imgMenu);
-		imgThuVien = (ImageView) findViewById(R.id.imgThuVien1);
+		imgThuVien = (ImageView) findViewById(R.id.imgBoGia);
 		imgHienThi = (ImageView) findViewById(R.id.imgHienThi);
 		imgAboutMe = (ImageView) findViewById(R.id.imgAboutMe);
 		slide_me = new SimpleSideDrawer(this);

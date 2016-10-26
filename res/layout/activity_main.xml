@@ -81,7 +81,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/imgThuVien1"
+                android:id="@+id/imgBoGia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/bookshelf" />
