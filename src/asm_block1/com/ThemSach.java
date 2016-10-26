@@ -25,15 +25,12 @@ public class ThemSach extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_themsach);
 		//Set id cho từng đối tượng đã khai báo ở trên
-		btnThem = (Button) findViewById(R.id.btnThem);	
-		
-		imgBack = (ImageView) findViewById(R.id.imgBack);
-		
+		btnThem = (Button) findViewById(R.id.btnThem);		
+		imgBack = (ImageView) findViewById(R.id.imgBack);		
 		edtTacGia = (EditText) findViewById(R.id.edtTacGia);
 		edtLink = (EditText) findViewById(R.id.edtLink);
 		edtNXB = (EditText) findViewById(R.id.edtSuaNXB);
-		edtTenSach = (EditText) findViewById(R.id.edtTenSach);
-		
+		edtTenSach = (EditText) findViewById(R.id.edtTenSach);	
 		spinner1 = (Spinner) findViewById(R.id.spinner1);
 
 		

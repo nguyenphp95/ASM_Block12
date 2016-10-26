@@ -113,14 +113,47 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnHienThi"
+            <ImageView
+                android:id="@+id/imgHienThi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hiển thị" />
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/schoolmaterial" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#000" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/imgAboutMe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/aboutme" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="Thông tin về tôi"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
         </LinearLayout>
-
+		
     </LinearLayout>
 
 </LinearLayout>

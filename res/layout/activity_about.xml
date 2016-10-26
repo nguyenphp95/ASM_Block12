@@ -8,11 +8,11 @@
         android:layout_height="wrap_content"
         android:background="#1dcdf9" >
 
-        <ImageButton
-            android:id="@+id/imgbtnMenu"
+  		<ImageView
+            android:id="@+id/imgBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="15dp"
             android:src="@drawable/backwardarrow" />
 
         <TextView
